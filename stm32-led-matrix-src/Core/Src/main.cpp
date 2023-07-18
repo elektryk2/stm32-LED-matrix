@@ -36,7 +36,7 @@ struct test
 void scroll_text();
 //PxMATRIX display(32,16,P_LAT, P_OE,P_A,P_B,P_C);
 PxMATRIX display(128,32, 0,0,0,0,0,0);
-uint8_t bright=100, time=50, time2=50;
+uint8_t bright=255, time=5, time2=50;
 uint16_t scrollTime=10ul;
 /* USER CODE END Includes */
 
@@ -122,6 +122,30 @@ uint16_t myBLACK = display.color565(0, 0, 0);
 //    }
 //}
 
+void static_text()
+{
+
+    display.clearDisplay();
+    display.setTextWrap(true);
+    display.setTextSize(2);
+    display.setCursor(0,2);
+
+    display.setTextColor(myCYAN);
+    display.writeText("Wel");
+    display.setTextColor(myGREEN);
+    display.writeText("come");
+    display.setTextColor(myMAGENTA);
+    display.writeText(" to ");
+    display.setTextColor(myYELLOW);
+    display.writeText("Px");
+    display.setTextColor(myWHITE);
+    display.writeText("Matrix!");
+
+    display.setFastUpdate(0);
+    time=10;
+    display.showBuffer();
+}
+
 void scroll_text()
 {
     display.setTextWrap(false);  // we don't wrap text so it scrolls nicely
@@ -164,6 +188,10 @@ void scroll_text()
 //      display.setTextColor(myWHITE);
 //      display.writeText("MATRIX!");
       t2 = millis();
+      //display.copyBuffer(1);
+      time=1;
+      display.setFastUpdate(1);
+      display.showBuffer();
   //    delay(5);
      // display.writeText("Wel");
 
@@ -171,7 +199,7 @@ void scroll_text()
       while((millis()-start_time)<20)
       {
     	// t1 = millis();
-           display.display(5);
+        // display.display(5);
         //t2 = millis();
       }
     }
@@ -216,6 +244,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim1);
+  HAL_TIM_Base_Start_IT(&htim2);
 
   /* USER CODE END 2 */
 
@@ -253,21 +282,27 @@ int main(void)
 
 //  display.copyBuffer(1);
 
-
+//delay(2000);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	 // GPIOC->ODR^=(1<<6);
+	// GPIOC->ODR^=(1<<6);
 	  //GPIOC->
-	  //delay_us2(1);
+	// delay_us3(42);
 	  //cppfun();
 	 // delay_ms(10000);
 
+	  static_text();
+	  delay(4000);
+	  for(int i=0;i<2;i++)
+	  {
+		  scroll_text();
+	  }
 	 display.setBrightness(bright);
 	// display.display(time);
-	 scroll_text();
+	//scroll_text();
 	  // delay(2);
 
   }
@@ -493,6 +528,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
     //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
   //  display.display(20);
+	GPIOC->ODR^=(1<<6);
+
+
+	display.display(time);
 }
 /* USER CODE END 4 */
 

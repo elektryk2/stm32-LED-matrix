@@ -8,12 +8,19 @@ extern "C" {
 #endif
 #include "main.h"
 
+void inline __attribute__((always_inline)) delay_us3(uint32_t delay)
+{
+   while(delay--) __asm("");
+}
+
+
 void delay_us2 (uint16_t us);
 void delay_ms2 (uint16_t us);
 
 void delay_ms(uint16_t au16_ms);
 void delay_us(uint16_t au16_us);
 
+//#define delayMicroseconds(x)  delay_us3(42*x)
 #define delayMicroseconds(x)  delay_us2(x)
 //#define delay(x)  delay_ms2(x)
 

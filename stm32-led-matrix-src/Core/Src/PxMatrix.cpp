@@ -919,7 +919,7 @@ uint8_t *PxMATRIX_bufferp = PxMATRIX_buffer;
          {
            // This pre-buffers the data for the next row pattern of this _display_color
              SPI_TRANSFER(&PxMATRIX_bufferp[_display_color*_buffer_size+(i+1)*_send_buffer_size],_send_buffer_size);
-             memset(&PxMATRIX_bufferp[_display_color*_buffer_size+(i+1)*_send_buffer_size],0,_send_buffer_size);
+             //memset(&PxMATRIX_bufferp[_display_color*_buffer_size+(i+1)*_send_buffer_size],0,_send_buffer_size);
 
          }
          else
@@ -927,7 +927,7 @@ uint8_t *PxMATRIX_bufferp = PxMATRIX_buffer;
            // This pre-buffers the data for the first row pattern of the next _display_color
         	 SPI_TRANSFER(&PxMATRIX_bufferp[((_display_color+1)%PxMATRIX_COLOR_DEPTH)*_buffer_size],_send_buffer_size);
 
-        	 memset(&PxMATRIX_bufferp[((_display_color+1)%PxMATRIX_COLOR_DEPTH)*_buffer_size], 0,_send_buffer_size);
+        	 //memset(&PxMATRIX_bufferp[((_display_color+1)%PxMATRIX_COLOR_DEPTH)*_buffer_size], 0,_send_buffer_size);
          }
 
          while ((micros()-start_time)<latch_time)

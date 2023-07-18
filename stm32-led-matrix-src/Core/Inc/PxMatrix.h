@@ -36,7 +36,7 @@ BSD license, check license.txt for more information
 #define P_OE_L() GPIOB->ODR&=~(1<<15)
 
 //#define PxMATRIX_DOUBLE_BUFFER 1
-//#define double_buffer
+#define double_buffer
 
 // Color depth per primary color - the more the slower the update
 #ifndef PxMATRIX_COLOR_DEPTH
