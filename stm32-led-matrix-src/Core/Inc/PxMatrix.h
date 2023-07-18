@@ -365,6 +365,9 @@ class PxMATRIX : public Adafruit_GFX
 // Write configuration register in some driver chips
 /*inline*/ void writeRegister(uint16_t reg_value, uint8_t reg_position);
 /*inline*/ void fm612xWriteRegister(uint16_t reg_value, uint8_t reg_position);
+public:
+void writeText(char const * text);
+
 };
 
 

@@ -82,11 +82,7 @@ uint16_t myCYAN = display.color565(0, 255, 255);
 uint16_t myMAGENTA = display.color565(255, 0, 255);
 uint16_t myBLACK = display.color565(0, 0, 0);
 
-void writeText(char const * text)
-{
-while(*text)
-	display.write(*text++);
-}
+
 
 
 //void scroll_text()
@@ -108,8 +104,8 @@ while(*text)
 //      display.clearDisplay();
 //
 //      display.setCursor(xpos,0);
-//      writeText("Test matrix 12312312");
-//      //writeText("Wel");
+//      display.writeText("Test matrix 12312312");
+//      //display.writeText("Wel");
 //     // display.println("Wel");
 //     //  display.println("1");
 //     // display.copyBuffer(1);
@@ -143,33 +139,33 @@ void scroll_text()
 
       display.setCursor(xpos,2);
 
-     // writeText("Welcome to PxMatrix!");
+     // display.writeText("Welcome to PxMatrix!");
       t1 = millis();
       display.setTextColor(myCYAN);
-      writeText("Wel");
+      display.writeText("Wel");
       display.setTextColor(myGREEN);
-      writeText("come");
+      display.writeText("come");
       display.setTextColor(myMAGENTA);
-      writeText(" to ");
+      display.writeText(" to ");
       display.setTextColor(myYELLOW);
-      writeText("Px");
+      display.writeText("Px");
       display.setTextColor(myWHITE);
-      writeText("Matrix!");
+      display.writeText("Matrix!");
 
 
 //      display.setTextColor(myCYAN);
-//      writeText("WEL");
+//      display.writeText("WEL");
 //      display.setTextColor(myGREEN);
-//      writeText("COME");
+//      display.writeText("COME");
 //      display.setTextColor(myMAGENTA);
-//      writeText(" TO ");
+//      display.writeText(" TO ");
 //      display.setTextColor(myYELLOW);
-//      writeText("PX");
+//      display.writeText("PX");
 //      display.setTextColor(myWHITE);
-//      writeText("MATRIX!");
+//      display.writeText("MATRIX!");
       t2 = millis();
   //    delay(5);
-     // writeText("Wel");
+     // display.writeText("Wel");
 
       start_time = millis();
       while((millis()-start_time)<20)
@@ -241,12 +237,12 @@ int main(void)
   //display.fillRect(0,0,128,32, myWHITE);
 
   display.setCursor(12,1);
-  writeText("1.9TDI");
+  display.writeText("1.9TDI");
  // display.print(" GODZINA");
   display.setTextColor(myMAGENTA);
   //display.setCursor(12,17);
   display.setCursor(6,17);
-  writeText("    POWER");
+  display.writeText("    POWER");
  // display.print(" 21:37:00");
 
 //display.write('a');

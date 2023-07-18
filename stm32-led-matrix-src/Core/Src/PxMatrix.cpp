@@ -1137,6 +1137,13 @@ void PxMATRIX::flushDisplay(void) {
 //   latch(show_time);
 // }
 
+
+void PxMATRIX::writeText(char const * text)
+{
+	while(*text)
+		write(*text++);
+}
+
 void PxMATRIX::clearDisplay(void) {
 #ifdef PxMATRIX_DOUBLE_BUFFER
   clearDisplay(!_active_buffer);
